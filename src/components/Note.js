@@ -36,7 +36,10 @@ class Note extends Component {
     } else {
       titleElement = <h5>{this.state.title}</h5>;
       bodyElement = <p>{this.state.body}</p>;
-      buttonArea = <div><button className="btn btn-info" onClick={this.handleEdit.bind(this)}>Edit</button><button className="btn btn-danger">Delete</button></div>;
+      buttonArea = <div>
+        <button className="btn btn-info" onClick={this.handleEdit.bind(this)}>Edit</button>
+        <button onClick={this.props.deleteNote} className="btn btn-danger">Delete</button>
+      </div>;
     }
 
     return (
@@ -51,6 +54,11 @@ class Note extends Component {
       </div>
     );
   }
+}
+
+Note.defaultProps = {
+  title: 'Default Title',
+  body: 'Default Body'
 }
 
 export default Note
